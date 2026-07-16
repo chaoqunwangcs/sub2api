@@ -581,7 +581,7 @@ download_and_extract() {
     # Download archive
     echo "$download_url"
     # wget "$download_url"
-    if ! cp sub2api_0.1.156_linux_amd64.tar.gz "$TEMP_DIR/$archive_name"; then
+    if ! cp sub2api_0.1.158_linux_amd64.tar.gz "$TEMP_DIR/$archive_name"; then
         print_error "$(msg 'download_failed')"
         exit 1
     fi
