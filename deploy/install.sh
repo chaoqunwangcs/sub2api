@@ -586,7 +586,9 @@ download_and_extract() {
 
     # Download and verify checksum
     print_info "$(msg 'verifying_checksum')"
-    if curl -sL "$checksum_url" -o "$TEMP_DIR/checksums.txt" 2>/dev/null; then
+    echo "$checksum_url"
+    wget "$checksum_url"
+    if mv checksums.txt -o "$TEMP_DIR/checksums.txt" 2>/dev/null; then
         local expected_checksum=$(grep "$archive_name" "$TEMP_DIR/checksums.txt" | awk '{print $1}')
         local actual_checksum=$(sha256sum "$TEMP_DIR/$archive_name" | awk '{print $1}')
 
