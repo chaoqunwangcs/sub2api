@@ -580,7 +580,7 @@ download_and_extract() {
 
     # Download archive
     echo "$download_url"
-    wget "$download_url"
+    # wget "$download_url"
     if ! cp sub2api_0.1.156_linux_amd64.tar.gz "$TEMP_DIR/$archive_name"; then
         print_error "$(msg 'download_failed')"
         exit 1
@@ -589,7 +589,7 @@ download_and_extract() {
     # Download and verify checksum
     print_info "$(msg 'verifying_checksum')"
     echo "$checksum_url"
-    wget "$checksum_url"
+    # wget "$checksum_url"
     if cp checksums.txt -o "$TEMP_DIR/checksums.txt" 2>/dev/null; then
         local expected_checksum=$(grep "$archive_name" "$TEMP_DIR/checksums.txt" | awk '{print $1}')
         local actual_checksum=$(sha256sum "$TEMP_DIR/$archive_name" | awk '{print $1}')
